@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/html">
+<title>El pablo</title>
+<body>
+<table>
+    <th>Current Tasks</th>
+    <tr>
+        <td>ID</td>
+        <td>Имя</td>
+        <td>Описание</td>
+        <td>Статус</td>
+        <td>Дата добавления</td>
+    </tr>
+    <tr th:each="taska : ${tasks}">
+
+        <td><span th:text="${taska.id}"/> </td>
+        <td><span th:text="${taska.name}"> Имя </span></td>
+        <td><span th:text="${taska.description}"> Описание </span></td>
+        <td><span th:text="${taska.status}"> Статус </span></td>
+        <td><span th:text="${taska.date}"> Дата добавления </span></td>
+        <td>
+<!--            action="/update"-->
+            <form  th:action="@{'/update/{id}'(id=${taska.id})}" th:method="get" >
+                <button type="submit" class="btn">
+                    Edit
+                </button>
+            </form></td><td>
+            <form action="#" th:action="@{'/delete/{id}'(id=${taska.id})}" th:method="delete" >
+                <button type="submit" class="btn">
+                    Delete
+                </button>
+            </form>
+             </td>
+    </tr>
+</table>
+<button id="addButton" value="add" name="add" onclick="window.location.href='/addTask'">Add task</button>
+
+</body>
+</html>

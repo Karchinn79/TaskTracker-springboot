@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add task</title>
+</head>
+<body>
+<form th:action="@{/saveAction}" th:object="${updatable}" method="get">
+
+    <input type="hidden" th:field="${updatable.id}"/>
+    <div><label>Name</label>
+        <input type="text" th:field="${updatable.name}"/></div>
+    <div> <label>Description</label>
+        <input type="text" th:field="${updatable.description}"/></div>
+    <div> <label>Done?</label>
+        <input type="checkbox" th:checked="${updatable.description}"/></div>
+    <div> <label>Date</label>
+        <input type="date" th:value ="${updatable.date}"/></div>
+    <input type="submit" value="Submit" />
+
+</form>
+</body>
+</html>
